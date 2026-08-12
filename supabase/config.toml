@@ -1,0 +1,22 @@
+# Supabase local project configuration
+project_id = "invoice-pro-saas"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "storage", "graphql_public"]
+
+[db]
+port = 54322
+shadow_port = 54323
+major_version = 15
+
+[auth]
+enabled = true
+site_url = "http://localhost:3000"
+additional_redirect_urls = ["https://localhost:3000"]
+jwt_expiry = 3600
+
+[storage]
+enabled = true
+file_size_limit = "50MB"

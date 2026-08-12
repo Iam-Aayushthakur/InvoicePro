@@ -1,0 +1,7 @@
+ENVIRONMENT="development"
+SUPABASE_URL="https://your-project.supabase.co"
+SUPABASE_SERVICE_ROLE_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+RAZORPAY_KEY_ID="rzp_test_..."
+RAZORPAY_KEY_SECRET="secret"
+STRIPE_SECRET_KEY="sk_test_..."
+RESEND_API_KEY="re_..."

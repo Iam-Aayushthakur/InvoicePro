@@ -15,6 +15,10 @@ export async function handleAuthRoutes(
     return AuthController.register(request, env);
   }
 
+  if (method === 'POST' && subRoute === 'oauth-onboard') {
+    return AuthController.oauthOnboard(request, env);
+  }
+
   if (method === 'GET' && subRoute === 'me') {
     try {
       const session = await authenticateRequest(request, env);

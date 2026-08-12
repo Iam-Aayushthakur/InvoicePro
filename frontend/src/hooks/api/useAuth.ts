@@ -59,3 +59,22 @@ export function useLogout() {
     },
   });
 }
+
+export function useCompleteOAuthRegistration() {
+  const { setAuth } = useAuthStore();
+  const router = useRouter();
+
+  return useMutation({
+    mutationFn: async (payload: { companyName: string; fullName?: string }) => {
+      // Calls the /api/v1/auth/oauth-onboard endpoint
+      const response = await apiClient.post<{ user: any; token: string; companyId?: string }>('/auth/oauth-onboard', payload);
+      return response;
+    },
+    onSuccess: (data) => {
+      if (data.token && data.user) {
+        setAuth(data.user, data.token, data.companyId);
+        router.push('/dashboard');
+      }
+    },
+  });
+}

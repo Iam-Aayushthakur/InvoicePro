@@ -1,8 +1,9 @@
-﻿'use client';
+'use client';
 
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useLogin } from '../../../hooks/api/useAuth';
+import { SocialAuthButtons } from '../../components/auth/SocialAuthButtons';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -69,6 +70,8 @@ export default function LoginPage() {
             {loginMutation.isPending ? 'Authenticating...' : 'Sign In'}
           </button>
         </form>
+
+        <SocialAuthButtons />
 
         <div className="text-center text-sm text-slate-500 mt-6">
           Don't have an account?{' '}

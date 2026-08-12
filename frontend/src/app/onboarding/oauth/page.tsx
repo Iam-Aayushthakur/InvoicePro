@@ -9,6 +9,7 @@ export default function OAuthOnboardingPage() {
   const [fullName, setFullName] = useState('');
   const [companyName, setCompanyName] = useState('');
   const [isCheckingAuth, setIsCheckingAuth] = useState(true);
+  const [accessToken, setAccessToken] = useState('');
   
   const router = useRouter();
   const supabase = createClient();
@@ -28,6 +29,7 @@ export default function OAuthOnboardingPage() {
       if (name) {
         setFullName(name);
       }
+      setAccessToken(session.access_token);
       
       setIsCheckingAuth(false);
     };
@@ -36,7 +38,7 @@ export default function OAuthOnboardingPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    completeMutation.mutate({ companyName, fullName });
+    completeMutation.mutate({ companyName, fullName, accessToken });
   };
 
   if (isCheckingAuth) {

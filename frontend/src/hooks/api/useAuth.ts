@@ -65,9 +65,13 @@ export function useCompleteOAuthRegistration() {
   const router = useRouter();
 
   return useMutation({
-    mutationFn: async (payload: { companyName: string; fullName?: string }) => {
+    mutationFn: async (payload: { companyName: string; fullName?: string; accessToken: string }) => {
       // Calls the /api/v1/auth/oauth-onboard endpoint
-      const response = await apiClient.post<{ user: any; token: string; companyId?: string }>('/auth/oauth-onboard', payload);
+      const response = await apiClient.post<{ user: any; token: string; companyId?: string }>('/auth/oauth-onboard', payload, {
+        headers: {
+          Authorization: `Bearer ${payload.accessToken}`
+        }
+      });
       return response;
     },
     onSuccess: (data) => {

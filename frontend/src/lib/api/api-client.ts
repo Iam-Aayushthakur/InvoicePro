@@ -1,6 +1,6 @@
 import { useAuthStore } from '../../stores/auth.store';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8787/api/v1';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
 
 export class ApiError extends Error {
   constructor(public status: number, public message: string, public code?: string, public details?: any) {
